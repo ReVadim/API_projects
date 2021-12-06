@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect, HttpResponseNotFound
 from django.shortcuts import render
 import requests
 from settings.settings import WEATHER_API_KEY
@@ -50,3 +51,13 @@ def main(request):
     context = {'all_info': all_cities, 'form': form}
 
     return render(request, 'weather/index.html', context)
+
+
+def delete(request, name):
+    print(request)
+    city = City.objects.get(name=name)
+    try:
+        city.delete()
+        return HttpResponseRedirect("/")
+    except city.DoesNotExist:
+        return HttpResponseNotFound("<h2>Person not found</h2>")
