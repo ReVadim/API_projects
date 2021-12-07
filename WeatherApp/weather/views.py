@@ -54,7 +54,7 @@ def main(request):
 
 
 def delete(request, name):
-    print(request)
+
     city = City.objects.get(name=name)
     try:
         city.delete()
