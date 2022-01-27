@@ -8,7 +8,7 @@ from .forms import CityForm
 def make_url(city_name: str) -> str:
     """ convert url address """
 
-    return f'https://api.openweathermap.org/data/2.5/weather?q={city_name}&units=metric&appid={{secrets.WEATHER_API_KEY}}'
+    return f'https://api.openweathermap.org/data/2.5/weather?q={city_name}&units=metric&appid=${{ secrets.WEATHER_API_KEY }}'
 
 
 def make_context(data: dict, name: str) -> dict:
